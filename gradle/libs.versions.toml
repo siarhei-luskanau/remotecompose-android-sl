@@ -31,7 +31,7 @@ androidx-compose-material-icons-extended = { group = "androidx.compose.material"
 
 androidx-remote-core = { group = "androidx.compose.remote", name = "remote-core", version.ref = "androidxRemote" }
 androidx-remote-player-core = { group = "androidx.compose.remote", name = "remote-player-core", version.ref = "androidxRemote" }
-androidx-remote-player-view = { group = "androidx.compose.remote", name = "remote-player-view", version.ref = "androidxRemote" }
+androidx-remote-player-compose = { group = "androidx.compose.remote", name = "remote-player-compose", version.ref = "androidxRemote" }
 
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }

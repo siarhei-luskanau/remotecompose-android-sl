@@ -60,7 +60,7 @@ dependencies {
     // Remote Compose player dependencies (creation happens on server)
     implementation(libs.androidx.remote.core)
     implementation(libs.androidx.remote.player.core)
-    implementation(libs.androidx.remote.player.view)
+    implementation(libs.androidx.remote.player.compose)
 
     implementation(libs.okhttp)
     implementation(libs.kotlinx.coroutines.android)

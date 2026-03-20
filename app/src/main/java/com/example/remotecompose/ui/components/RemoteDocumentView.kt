@@ -1,14 +1,15 @@
-@file:SuppressLint("RestrictedApiAndroidX")
-
 package com.example.remotecompose.ui.components
 
 import android.annotation.SuppressLint
+import androidx.compose.remote.player.compose.ExperimentalRemotePlayerApi
+import androidx.compose.remote.player.compose.RemoteDocumentPlayer
+import androidx.compose.remote.player.core.RemoteDocument
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.remote.player.view.RemoteComposePlayer
 
+@SuppressLint("RestrictedApi")
+@OptIn(ExperimentalRemotePlayerApi::class)
 @Composable
 fun RemoteDocumentView(
     documentBytes: ByteArray,
@@ -16,17 +17,12 @@ fun RemoteDocumentView(
     contentKey: Any = documentBytes.contentHashCode(),
     onAction: (id: Int, metadata: String?) -> Unit = { _, _ -> },
 ) {
-    key(contentKey) {
-        AndroidView(
-            factory = { ctx ->
-                RemoteComposePlayer(ctx).apply {
-                    setDocument(documentBytes)
-                    addIdActionListener { id, metadata ->
-                        onAction(id, metadata)
-                    }
-                }
-            },
-            modifier = modifier
-        )
-    }
+    val document = remember(contentKey) { RemoteDocument(documentBytes) }
+    RemoteDocumentPlayer(
+        document = document.document,
+        documentWidth = document.width,
+        documentHeight = document.height,
+        modifier = modifier,
+        onAction = onAction,
+    )
 }
